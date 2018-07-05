@@ -5,14 +5,14 @@ SITES=( \
     "https://localhost:9443/console/" \
     "https://localhost:9543/console/"\
     )
-SITES_STATUS_FILE="/Users/vinaybabuyella/wso2SiteMonitor.status"
+SITES_STATUS_FILE="/tmp/wso2SiteMonitor.status"
 
 #Add Admin Services to monitor server status here
 SERVICES=( \
     "https://localhost:9443/services/ServerAdmin" \
     "https://localhost:9543/services/ServerAdmin" \
     )
-SERVICES_STATUS_FILE="/Users/vinaybabuyella/wso2ServiceMonitor.status"
+SERVICES_STATUS_FILE="/tmp/wso2ServiceMonitor.status"
 
 
 SLOW_THRESHOLD_SERVICE=4 # Slow threshold for services in Seconds
@@ -21,6 +21,9 @@ CURL_TIMEOUT=15 # Curl timeout in seconds
 
 SITE_OK_STATUS=( "200" )
 SERCVICE_OK_XML_RESPONSE='<ns:return>RUNNING</ns:return>'
+
+#Base64 encoded string for wso2 user:pwd
+AUTH_HEADER="Authorization: Basic YWRtaW46YWRtaW4="
 
 ######### NO USER MOD BELOW THIS LINE ############
 
@@ -115,7 +118,7 @@ mv /tmp/SiteMonitor.status.tmp $SITES_STATUS_FILE
 for SERVICE in "${SERVICES[@]}"
 do
     START=$(date +%s)
-	RAW=`curl -k -sL -H "Content-Type: application/soap+xml;charset=UTF-8;"  -H "SOAPAction:urn:getServerStatus" --basic -u "admin:admin" --data @getServerStatus.xml --connect-timeout $CURL_TIMEOUT  $SERVICE`
+	RAW=`curl -k -sL -H "Content-Type: application/soap+xml;charset=UTF-8;" -H "$AUTH_HEADER" -H "SOAPAction:urn:getServerStatus" --data @getServerStatus.xml --connect-timeout $CURL_TIMEOUT  $SERVICE`
     END=$(date +%s)
     DIFF=$(( $END - $START ))
 
@@ -125,7 +128,7 @@ do
 		RESPONSE="NOT_NULL"
     fi
 
-	
+
     if [[ $RAW = *$SERCVICE_OK_XML_RESPONSE* ]] 
 	then
         if [ "$DIFF" -lt "$SLOW_THRESHOLD_SERVICE" ]; then
