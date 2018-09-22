@@ -1,7 +1,10 @@
 #Add Sites to monitor here
 SITES=( \
+    "https://aws.amazon.com" \
+    "https://www.facebook.com" \
+    "https://www.google.com/" \
     "https://localhost:9443/console/" \
-    "https://localhost:9543/console/"\
+    "https://localhost:9543/console/"\        
     )
 SITES_STATUS_FILE="/tmp/wso2SiteMonitor.status"
 
@@ -59,7 +62,7 @@ do
     fi
 
 	echo "Site: $SITE is $STATUS"
-	echo "Latency is $DIFF"
+	echo "Latency is $DIFF seconds"
 		
 	echo " "
 
@@ -139,7 +142,7 @@ do
     fi	
 
 	echo "Service: $SERVICE is $STATUS"
-	echo "Latency is $DIFF"
+	echo "Latency is $DIFF seconds"
 
 	echo " "
 

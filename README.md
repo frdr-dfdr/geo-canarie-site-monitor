@@ -14,6 +14,7 @@ Customizable To/From notification settings
 Customizable SLOW latency threshold  
 Tracks previous state change and last update to avoid multiple notifications  
 Uses single text file for data storage, no DB necessary (configurable to have separate status files for Services and Sites)  
+No agents or special software to install
 
 ## Monitoring categories 
 1. Sites :  Monitor carbon consoles or any http/https sites, checking for “200” status returned  
