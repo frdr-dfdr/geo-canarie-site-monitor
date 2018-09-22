@@ -1,5 +1,3 @@
-#!/bin/bash
-
 #Add Sites to monitor here
 SITES=( \
     "https://localhost:9443/console/" \
