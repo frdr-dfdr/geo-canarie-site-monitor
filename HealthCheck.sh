@@ -26,9 +26,11 @@ SERCVICE_OK_XML_RESPONSE='<ns:return>RUNNING</ns:return>'
 #Base64 encoded string for wso2 user:pwd
 AUTH_HEADER="Authorization: Basic YWRtaW46YWRtaW4="
 
-#Email users confgi
-NOTIFY_FROM_EMAIL='monitoring@xyz.com'
-NOTIFY_TO_EMAIL='mymail@xyz.com'
+
+#Note: Configure mail commands in lines 102 and 182 as per your environments mail server configuration
+#Email users 
+#NOTIFY_FROM_EMAIL='monitoring@xyz.com'
+#NOTIFY_TO_EMAIL='mymail@xyz.com'
 
 ######### NO USER MOD BELOW THIS LINE ############
 
