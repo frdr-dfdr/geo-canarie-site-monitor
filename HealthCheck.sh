@@ -1,18 +1,11 @@
 #Add Sites to monitor here
-SITES=( \
-    "https://aws.amazon.com" \
-    "https://www.facebook.com" \
-    "https://www.google.com/" \
-    "https://localhost:9443/console/" \
-    "https://localhost:9543/console/"\        
+SITES=( \ 
+    "https://geo.frdr-dfdr.ca:443"\         
     )
 SITES_STATUS_FILE="/tmp/wso2SiteMonitor.status"
 
 #Add Admin Services to monitor server status here
-SERVICES=( \
-    "https://localhost:9443/services/ServerAdmin" \
-    "https://localhost:9543/services/ServerAdmin" \
-    )
+SERVICES=()
 SERVICES_STATUS_FILE="/tmp/wso2ServiceMonitor.status"
 
 
