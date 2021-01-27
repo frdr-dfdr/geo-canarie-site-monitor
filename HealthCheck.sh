@@ -1,7 +1,5 @@
 #Add Sites to monitor here
-SITES=( \ 
-    "https://geo.frdr-dfdr.ca:443"\         
-    )
+SITES=( "https://geo.frdr-dfdr.ca" )
 SITES_STATUS_FILE="/tmp/wso2SiteMonitor.status"
 
 #Add Admin Services to monitor server status here
