@@ -191,7 +191,7 @@ do
 	
 done
 
-SERVICE_MON_STATUS_TMP=/tmp/SiteMonitor.status.tmp
+SERVICE_MON_STATUS_TMP=/tmp/ServiceMonitor.status.tmp
 if [ -f $SERVICE_MON_STATUS_TMP ]; then
     cat $SERVICE_MON_STATUS_TMP > $SERVICES_STATUS_FILE
     rm  $SERVICE_MON_STATUS_TMP
