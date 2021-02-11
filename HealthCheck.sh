@@ -105,8 +105,12 @@ do
     echo $SITE $RESPONSE $CHANGED $END $DIFF $STATUS  >> /tmp/SiteMonitor.status.tmp	
 	
 done
-mv /tmp/SiteMonitor.status.tmp $SITES_STATUS_FILE
 
+SITE_MON_STATUS_TMP=/tmp/SiteMonitor.status.tmp
+if [ -f $SITE_MON_STATUS_TMP ]; then
+    cat $SITE_MON_STATUS_TMP > $SITES_STATUS_FILE
+    rm  $SITE_MON_STATUS_TMP
+fi
 
 #--------- End: Sites Health Check ------------
 
@@ -186,7 +190,12 @@ do
     echo $SERVICE $RESPONSE $CHANGED $END $DIFF $STATUS  >> /tmp/ServiceMonitor.status.tmp	
 	
 done
-mv /tmp/ServiceMonitor.status.tmp $SERVICES_STATUS_FILE
+
+SERVICE_MON_STATUS_TMP=/tmp/SiteMonitor.status.tmp
+if [ -f $SERVICE_MON_STATUS_TMP ]; then
+    cat $SERVICE_MON_STATUS_TMP > $SERVICES_STATUS_FILE
+    rm  $SERVICE_MON_STATUS_TMP
+fi
 
 #--------- End: Services Health Check ------------
 
